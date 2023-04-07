@@ -11,27 +11,25 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  HomeProvider? HPTrue,HPFalse;
-
+  int i=0;
   @override
   Widget build(BuildContext context) {
-
-    HPFalse=Provider.of<HomeProvider>(context,listen: false);
-    HPTrue=Provider.of<HomeProvider>(context,listen: true);
-
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          title: Text("Stepper ui"),
+        ),
         body: Stepper(
           onStepTapped: (value) {
-            HPFalse!.jump(value);
+            i=value;
           },
-          currentStep: HPTrue!.i,
+          currentStep: i,
           onStepContinue: () {
             setState(
                   () {
-                if (HPTrue!.i < 9)
+                if (i < 9)
                 {
-                  HPTrue!.i++;
+                  i++;
                 }
               },
             );
@@ -39,47 +37,47 @@ class _HomeScreenState extends State<HomeScreen> {
           onStepCancel: () {
             setState(
                   () {
-                if (HPTrue!.i > 0)
+                if (i > 0)
                 {
-                  HPTrue!.i--;
+                  i--;
                 }
               },
             );
           },
           steps: [
             Step(
-                title: Text("Prifile Picture"),
+                title: Text("Profile"),
                 content: ListTile(
                   title: Text("My profile"),
-                  subtitle: Text("Snehal Sangani"),
+                  subtitle: Text("Ishu Gangani"),
                 ),
                 isActive: true),
             Step(
                 title: Text("Name"),
                 content: ListTile(
                   title: Text("Name"),
-                  subtitle: Text("Snehal Sangani"),
+                  subtitle: Text("Ishu Gangani"),
                 ),
                 isActive: true),
             Step(
                 title: Text("Number"),
                 content: ListTile(
                   title: Text("Phone Number"),
-                  subtitle: Text("8956325482"),
+                  subtitle: Text("1234567890"),
                 ),
                 isActive: true),
             Step(
                 title: Text("Email"),
                 content: ListTile(
                   title: Text("Email"),
-                  subtitle: Text("snehalsangani@gmail.com"),
+                  subtitle: Text("ishugangani24@gmail.com"),
                 ),
                 isActive: true),
             Step(
                 title: Text("DOB"),
                 content: ListTile(
                   title: Text("Date of birth"),
-                  subtitle: Text("18/12/2004"),
+                  subtitle: Text("06/08/2004"),
                 ),
                 isActive: true),
             Step(
@@ -93,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: Text("Current Location"),
                 content: ListTile(
                   title: Text("Location"),
-                  subtitle: Text("104,pushpak soc,dharamnagar road"),
+                  subtitle: Text("Uttran,Surat,Varachh"),
                 ),
                 isActive: true),
             Step(
@@ -107,14 +105,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: Text("Language"),
                 content: ListTile(
                   title: Text("Language"),
-                  subtitle: Text("Gujarati,hindi"),
+                  subtitle: Text("Gujarati,Hindi,English,French"),
                 ),
                 isActive: true),
             Step(
                 title: Text("Biography"),
                 content: ListTile(
                   title: Text("Biography"),
-                  subtitle: Text("Keep Smile"),
+                  subtitle: Text("It's me, I'm the problem.It's me"),
                 ),
                 isActive: true),
           ],
